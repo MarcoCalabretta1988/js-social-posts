@@ -83,8 +83,8 @@ Se clicchiamo sul tasto "Mi Piace" cambiamo il colore al testo del bottone e inc
  
  const printPosts = () => {
     let postUploaded = '';
-
-     posts.forEach(({id,name,authorPic,date,text,postImg,numberOfLike})=>{
+    
+     posts.forEach(({id,name,authorPic,date,text,postImg,numberOfLike},i)=>{
          postUploaded += `
          <div class="post">
          <div class="post__header">
@@ -109,8 +109,8 @@ Se clicchiamo sul tasto "Mi Piace" cambiamo il colore al testo del bottone e inc
            <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
            <span class="like-button__label">Mi Piace</span>
            </button>
-           </div>
-           <div class="likes__counter">Piace a <b id="like-counter-1" class="js-likes-counter">${numberOfLike}</b> persone</div>
+        </div>
+           <div class="likes__counter">Piace a <b id="like-counter-${i}" class="js-likes-counter">${numberOfLike}</b> persone</div>
            </div>
            </div>
            </div>
@@ -128,26 +128,28 @@ const postList = document.querySelector('.posts-list');
 
 //? ----------------------------------------------EVENTI INIZIALI------------------------------------------------------------------------------------
 let isClicked = false;
-     
-
-     
+         
 printPosts();
 
-const likeButton = document.querySelectorAll('.like-button.js-like-button');
+const likeButton = document.querySelectorAll('.likes__cta button');
+
 
 //? ---------------------------------------------EVENTI DINAMICI-------------------------------------------------------------------------------------
 
 
 likeButton.forEach ((button,i)=>button.addEventListener('click', () =>{
+    const likeCounter = document.getElementById(`like-counter-${i}`);
     isClicked = !isClicked;
+    let newNumberOfLike = posts[i].numberOfLike;
     if(isClicked){
-        posts[i].numberOfLike++;
         event.target.classList.add('like-button--liked');
+        newNumberOfLike++;
     }
     else{
         event.target.classList.remove('like-button--liked');
-        posts[i].numberOfLike--;    
+        newNumberOfLike = posts[i].numberOfLike; 
     }
+    likeCounter.innerText = newNumberOfLike;
     return;
 }));
 
