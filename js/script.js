@@ -35,7 +35,7 @@ Se clicchiamo sul tasto "Mi Piace" cambiamo il colore al testo del bottone e inc
         id: 1,
         name: 'Phil Mangione',
         authorPic:'img/Phil.jpg',
-        date: '10/21/2022' ,
+        date: new Date('10/21/2022') ,
         text: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facere, quia voluptates? Incidunt facere repudiandae et quam sunt eveniet cupiditate nesciunt, similique exercitationem quos illum dolor aliquid error voluptas vitae dicta',
         postImg:'img/Trafic.jpg',
         numberOfLike:38,
@@ -44,7 +44,7 @@ Se clicchiamo sul tasto "Mi Piace" cambiamo il colore al testo del bottone e inc
         id: 2,
         name: 'Anna Lorem',
         authorPic:'img/Anna.jpg',
-        date: '7/25/2022' ,
+        date: new Date('3/2/2022')  ,
         text: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facere, quia voluptates? Incidunt facere repudiandae et quam sunt eveniet cupiditate nesciunt, similique exercitationem quos illum dolor aliquid error voluptas vitae dicta',
         postImg:'img/Lion.jpg',
         numberOfLike:995,
@@ -53,7 +53,7 @@ Se clicchiamo sul tasto "Mi Piace" cambiamo il colore al testo del bottone e inc
         id: 3,
         name: 'Sergio Miglio',
         authorPic:'img/Sergio.jpg',
-        date: '2/4/2022' ,
+        date: new Date('11/7/2022')  ,
         text: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facere, quia voluptates? Incidunt facere repudiandae et quam sunt eveniet cupiditate nesciunt, similique exercitationem quos illum dolor aliquid error voluptas vitae dicta',
         postImg:'img/Country.jpg',
         numberOfLike:5,
@@ -62,7 +62,7 @@ Se clicchiamo sul tasto "Mi Piace" cambiamo il colore al testo del bottone e inc
         id: 4,
         name: 'Sara Ipsum',
         authorPic:'img/Sara.jpg',
-        date: '8/12/2022' ,
+        date: new Date('7/11/2022')  ,
         text: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facere, quia voluptates? Incidunt facere repudiandae et quam sunt eveniet cupiditate nesciunt, similique exercitationem quos illum dolor aliquid error voluptas vitae dicta',
         postImg:'img/Palace.jpg',
         numberOfLike:365,
@@ -71,7 +71,7 @@ Se clicchiamo sul tasto "Mi Piace" cambiamo il colore al testo del bottone e inc
         id: 5,
         name: 'Elena Baboden',
         authorPic:'img/Elena.jpg',
-        date: '1/20/2022' ,
+        date: new Date('5/5/2022')  ,
         text: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facere, quia voluptates? Incidunt facere repudiandae et quam sunt eveniet cupiditate nesciunt, similique exercitationem quos illum dolor aliquid error voluptas vitae dicta',
         postImg:'img/Bridge.jpg',
         numberOfLike:55,
@@ -94,7 +94,7 @@ Se clicchiamo sul tasto "Mi Piace" cambiamo il colore al testo del bottone e inc
          </div>
          <div class="post-meta__data">
          <div class="post-meta__author">${name}</div>
-         <div class="post-meta__time">${date}</div>
+         <div class="post-meta__time">${date.toLocaleDateString()}</div>
          </div>
          </div>
          </div>
@@ -141,6 +141,7 @@ likeButton.forEach ((button,i)=>button.addEventListener('click', () =>{
     const likeCounter = document.getElementById(`like-counter-${i}`);
     isClicked = !isClicked;
     let newNumberOfLike = posts[i].numberOfLike;
+
     if(isClicked){
         event.target.classList.add('like-button--liked');
         newNumberOfLike++;
@@ -154,3 +155,7 @@ likeButton.forEach ((button,i)=>button.addEventListener('click', () =>{
 }));
 
 
+ let date = new Date("2021-01-09");
+ console.log(date);
+ Intl.DateTimeFormat('de-De').format(date);
+ console.log(date);
