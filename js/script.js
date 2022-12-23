@@ -155,7 +155,3 @@ likeButton.forEach ((button,i)=>button.addEventListener('click', () =>{
 }));
 
 
- let date = new Date("2021-01-09");
- console.log(date);
- Intl.DateTimeFormat('de-De').format(date);
- console.log(date);
