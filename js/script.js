@@ -43,7 +43,7 @@ Se clicchiamo sul tasto "Mi Piace" cambiamo il colore al testo del bottone e inc
     {
         id: 2,
         name: 'Anna Lorem',
-        authorPic:'img/Anna.jpg',
+        authorPic:'',
         date: new Date('3/2/2022')  ,
         text: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facere, quia voluptates? Incidunt facere repudiandae et quam sunt eveniet cupiditate nesciunt, similique exercitationem quos illum dolor aliquid error voluptas vitae dicta',
         postImg:'img/Lion.jpg',
@@ -83,14 +83,22 @@ Se clicchiamo sul tasto "Mi Piace" cambiamo il colore al testo del bottone e inc
  
  const printPosts = () => {
     let postUploaded = '';
+
+
     
      posts.forEach(({id,name,authorPic,date,text,postImg,numberOfLike},i)=>{
+
+        let authorPicClasses = `<img class="profile-pic" src="${authorPic}" alt="${name}" />`;
+         if (authorPic === ''){
+         authorPicClasses = `<div class="profile-pic-default">PT</div>`;
+        }
+
          postUploaded += `
          <div class="post">
          <div class="post__header">
          <div class="post-meta">
          <div class="post-meta__icon">
-         <img class="profile-pic" src="${authorPic}" alt="${name}" />
+           ${authorPicClasses}
          </div>
          <div class="post-meta__data">
          <div class="post-meta__author">${name}</div>
