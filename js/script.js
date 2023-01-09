@@ -81,6 +81,8 @@ Se clicchiamo sul tasto "Mi Piace" cambiamo il colore al testo del bottone e inc
    
  //? ------------------------------------------------FUNZIONI----------------------------------------------------------------------------------
  
+
+
  const printPosts = () => {
     let postUploaded = '';
 
@@ -88,9 +90,19 @@ Se clicchiamo sul tasto "Mi Piace" cambiamo il colore al testo del bottone e inc
     
      posts.forEach(({id,name,authorPic,date,text,postImg,numberOfLike},i)=>{
 
+        const getInitials = (name) =>{
+          const words = name.split(' ');
+          let initials = '';
+          words.forEach(word=>{
+           initials += word[0];
+          })
+          return initials.substring(0,2).toUpperCase();
+        }
+
         let authorPicClasses = `<img class="profile-pic" src="${authorPic}" alt="${name}" />`;
-         if (authorPic === ''){
-         authorPicClasses = `<div class="profile-pic-default">PT</div>`;
+         if (!authorPic){
+          const initials = getInitials(name);
+         authorPicClasses = `<div class="profile-pic-default">${initials}</div>`;
         }
 
          postUploaded += `
@@ -113,7 +125,7 @@ Se clicchiamo sul tasto "Mi Piace" cambiamo il colore al testo del bottone e inc
          <div class="post__footer">
        <div class="likes js-likes">
          <div class="likes__cta">
-           <button class="like-button js-like-button" href="#" data-postid="1">
+           <button class="like-button js-like-button" href="#" data-postid="${id}">
            <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
            <span class="like-button__label">Mi Piace</span>
            </button>
